@@ -2,9 +2,10 @@ import React from "react";
 
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
-import photos from "mocks/photos";
 
-const PhotoList = () => {
+const PhotoList = (props) => {
+
+  const photos = props.photos;
 
   const photoListArray = photos.map(photo => (
     <PhotoListItem key={photo.id} photoData={photo} />
