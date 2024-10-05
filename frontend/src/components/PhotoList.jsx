@@ -51,7 +51,7 @@ const sampleDataForPhotoList = [
     user: {
       id: "3",
       username: "exampleuser",
-      name: "Joe Example",
+      name: "Jeff Fake",
       profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
     },
   },
@@ -59,13 +59,13 @@ const sampleDataForPhotoList = [
 
 const PhotoList = () => {
 
-  const generatePhotoList = sampleDataForPhotoList.map(photo => (
+  const generatedPhotoList = sampleDataForPhotoList.map(photo => (
     <PhotoListItem key={photo.id} photoData={photo} />
   ))
 
   return (
     <ul className="photo-list">
-      {generatePhotoList}
+      {generatedPhotoList}
     </ul>
   );
 };
