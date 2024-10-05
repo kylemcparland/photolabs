@@ -7,7 +7,7 @@ function PhotoFavButton(props) {
   const [favButton, changeFavState] = useState(false);
 
   const handleFav = () => {
-    favButton ? changeFavState(false) : changeFavState(true)
+    changeFavState(prevState => !prevState);
   }
 
   return (
