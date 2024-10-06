@@ -8,7 +8,9 @@ function PhotoFavButton(props) {
 
   const { isFavPhotoExist, mutateFavPhotos, id } = props;
 
-  const handleFav = () => {
+  const handleFav = (e) => {
+    e.stopPropagation();
+
     changeFavState(prevState => !prevState);
     isFavPhotoExist(true);
     mutateFavPhotos(id, favButton);
