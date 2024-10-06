@@ -4,14 +4,12 @@ import '../styles/HomeRoute.scss'
 import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
-const HomeRoute = (props) => {
-
-  const { topics, photos, isFavPhoto, isFavPhotoExist, mutateFavPhotos, selectPhoto, favPhotoArray } = props;
+const HomeRoute = ({ topics, photos, mutateFavPhotos, selectPhoto, favPhotoArray }) => {
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} isFavPhoto={isFavPhoto} favPhotoArray={favPhotoArray} />
-      <PhotoList photos={photos} isFavPhotoExist={isFavPhotoExist} mutateFavPhotos={mutateFavPhotos} selectPhoto={selectPhoto} favPhotoArray={favPhotoArray} />
+      <TopNavigation topics={topics} favPhotoArray={favPhotoArray} />
+      <PhotoList photos={photos} mutateFavPhotos={mutateFavPhotos} selectPhoto={selectPhoto} favPhotoArray={favPhotoArray} />
     </div>
   );
 };

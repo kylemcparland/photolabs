@@ -6,19 +6,17 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = (props) => {
-  const { displayModal, favPhotoArray, mutateFavPhotos } = props;
-
+const PhotoDetailsModal = ({ displayModal, favPhotoArray, mutateFavPhotos, photoDetails }) => {
   const {
     id,
     user: { name: username, profile },
     urls: { full: imageSource },
     location: { city, country },
-  } = props.photoDetails;
+    similar_photos
+  } = photoDetails;
 
-  const similarPhotos = Object.values(props.photoDetails.similar_photos);
-
-  const isFav = favPhotoArray.find(fav => fav.id === id);
+  const similarPhotos = Object.values(similar_photos);
+  const isFav = favPhotoArray.includes(id);
 
   return (
     <div className="photo-details-modal">
