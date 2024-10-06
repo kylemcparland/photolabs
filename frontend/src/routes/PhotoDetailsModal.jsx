@@ -7,7 +7,7 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
-  const { displayModal } = props;
+  const { displayModal, favPhotoArray, mutateFavPhotos } = props;
 
   const {
     id,
@@ -17,6 +17,8 @@ const PhotoDetailsModal = (props) => {
   } = props.photoDetails;
 
   const similarPhotos = Object.values(props.photoDetails.similar_photos);
+
+  const isFav = favPhotoArray.find(fav => fav.id === id);
 
   return (
     <div className="photo-details-modal">
@@ -36,7 +38,7 @@ const PhotoDetailsModal = (props) => {
 
       <div className="photo-details-modal__images">
         <p>Similar Photos</p>
-        <PhotoList photos={similarPhotos} />
+        <PhotoList photos={similarPhotos} favPhotoArray={favPhotoArray} mutateFavPhotos={mutateFavPhotos} />
       </div>
 
     </div>

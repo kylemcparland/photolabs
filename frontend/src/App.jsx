@@ -9,8 +9,9 @@ import photos from "mocks/photos";
 import topics from 'mocks/topics';
 
 const App = () => {
-
+  // cut?
   const [isFavPhoto, isFavPhotoExist] = useState(false);
+  //
   const [favPhotoArray, modifyFavPhotoArray] = useState([]);
   const [modal, displayModal] = useState();
 
@@ -28,8 +29,8 @@ const App = () => {
 
   return (
     <div className="App">
-      {modal && <PhotoDetailsModal displayModal={displayModal} photoDetails={modal} />}
-      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} mutateFavPhotos={mutateFavPhotos} selectPhoto={selectPhoto} />
+      {modal && <PhotoDetailsModal displayModal={displayModal} photoDetails={modal} favPhotoArray={favPhotoArray} mutateFavPhotos={mutateFavPhotos} />}
+      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} mutateFavPhotos={mutateFavPhotos} selectPhoto={selectPhoto} favPhotoArray={favPhotoArray} />
     </div>
   );
 };

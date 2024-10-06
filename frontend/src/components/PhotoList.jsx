@@ -5,10 +5,10 @@ import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
 
-  const { photos, isFavPhotoExist, mutateFavPhotos, selectPhoto } = props;
+  const { photos, isFavPhotoExist, mutateFavPhotos, selectPhoto, favPhotoArray } = props;
 
   const photoListArray = photos.map(photo => (
-    <PhotoListItem key={photo.id} photoData={photo} isFavPhotoExist={isFavPhotoExist} mutateFavPhotos={mutateFavPhotos} selectPhoto={selectPhoto} />
+    <PhotoListItem key={photo.id} photoData={photo} isFavPhotoExist={isFavPhotoExist} mutateFavPhotos={mutateFavPhotos} selectPhoto={selectPhoto} favPhotoArray={favPhotoArray} />
   ))
 
   return (

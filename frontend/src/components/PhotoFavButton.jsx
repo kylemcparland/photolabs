@@ -4,22 +4,21 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const [favButton, changeFavState] = useState(false);
 
-  const { isFavPhotoExist, mutateFavPhotos, id } = props;
+
+  const { mutateFavPhotos, id, isFav } = props;
 
   const handleFav = (e) => {
     e.stopPropagation();
 
-    changeFavState(prevState => !prevState);
-    isFavPhotoExist(true);
-    mutateFavPhotos(id, favButton);
+    // isFavPhotoExist(true);
+    mutateFavPhotos(id, isFav);
   }
 
   return (
     <div className="photo-list__fav-icon" onClick={handleFav}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={favButton}></FavIcon>
+        <FavIcon selected={isFav}></FavIcon>
       </div>
     </div>
   );

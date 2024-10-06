@@ -6,6 +6,10 @@
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
+
+  :hover {
+    cursor: pointer;
+  }
 }
 
 .photo-list__image {
