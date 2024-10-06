@@ -12,7 +12,12 @@ const App = () => {
 
   const [isFavPhoto, isFavPhotoExist] = useState(false);
   const [favPhotoArray, modifyFavPhotoArray] = useState([]);
-  const [modal, displayModal] = useState(false);
+  const [modal, displayModal] = useState();
+
+  const selectPhoto = (id) => {
+    const selectedPhoto = photos.find(photo => photo.id === id);
+    displayModal(selectedPhoto);
+  }
 
   const mutateFavPhotos = (id, state) => {
     const newFavourite = photos.find(photo => photo.id === id);
@@ -23,8 +28,8 @@ const App = () => {
 
   return (
     <div className="App">
-      {modal && <PhotoDetailsModal displayModal={displayModal} />}
-      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} mutateFavPhotos={mutateFavPhotos} displayModal={displayModal} />
+      {modal && <PhotoDetailsModal displayModal={displayModal} photoDetails={modal} />}
+      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} mutateFavPhotos={mutateFavPhotos} selectPhoto={selectPhoto} />
     </div>
   );
 };
