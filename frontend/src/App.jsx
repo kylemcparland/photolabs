@@ -8,16 +8,17 @@ import topics from 'mocks/topics';
 const App = () => {
 
   const [isFavPhoto, isFavPhotoExist] = useState(false);
+  const [favPhotoArray, modifyFavPhotoArray ] = useState([]);
 
-  const [favPhotos, addPhotoToFav ] = useState([]);
-
-  const addFavPhoto = (id) => {
-    addPhotoToFav(currentFavs => [...currentFavs, photos[id]]);
+  const mutateFavPhotos = (id, state) => {
+    state 
+      ? modifyFavPhotoArray(currentFavs => currentFavs.filter(fav => Number(fav.id) !== Number(id) + 1))
+      : modifyFavPhotoArray(currentFavs => [...currentFavs, photos[id]])
   }
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} addFavPhoto={addFavPhoto} />
+      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} mutateFavPhotos={mutateFavPhotos} />
     </div>
   );
 };
