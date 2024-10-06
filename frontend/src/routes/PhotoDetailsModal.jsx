@@ -16,6 +16,8 @@ const PhotoDetailsModal = (props) => {
     location: { city, country },
   } = props.photoDetails;
 
+  const similarPhotos = Object.values(props.photoDetails.similar_photos);
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={() => displayModal(false)} >
@@ -31,9 +33,10 @@ const PhotoDetailsModal = (props) => {
           </div>
         </div>
       </div>
-      
+
       <div className="photo-details-modal__images">
-      <PhotoList photos={photos} />
+        <p>Similar Photos</p>
+        <PhotoList photos={similarPhotos} />
       </div>
 
     </div>
