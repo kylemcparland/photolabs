@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PhotoList from 'components/PhotoList';
-import photos from 'mocks/photos';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
@@ -22,9 +22,14 @@ const PhotoDetailsModal = (props) => {
 
   return (
     <div className="photo-details-modal">
-      <button className="photo-details-modal__close-button" onClick={() => displayModal(false)} >
-        <img src={closeSymbol} alt="close symbol" />
-      </button>
+
+      <div className="photo-details-modal__top-bar">
+        <PhotoFavButton isFav={isFav} mutateFavPhotos={mutateFavPhotos} id={id} />
+        <button className="photo-details-modal__close-button" onClick={() => displayModal(false)} >
+          <img src={closeSymbol} alt="close symbol" />
+        </button>
+      </div>
+
       <img className="photo-details-modal__image" src={imageSource} />
       <div className="photo-details-modal__header">
         <div className="photo-details-modal__photographer-details">
