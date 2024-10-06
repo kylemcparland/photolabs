@@ -6,12 +6,12 @@ import PhotoList from "./PhotoList";
 
 const HomeRoute = (props) => {
 
-  const { topics, photos, isFavPhoto, isFavPhotoExist } = props;
+  const { topics, photos, isFavPhoto, isFavPhotoExist, addFavPhoto } = props;
 
   return (
     <div className="home-route">
       <TopNavigation topics={topics} isFavPhoto={isFavPhoto} />
-      <PhotoList photos={photos} isFavPhotoExist={isFavPhotoExist} />
+      <PhotoList photos={photos} isFavPhotoExist={isFavPhotoExist} addFavPhoto={addFavPhoto} />
     </div>
   );
 };

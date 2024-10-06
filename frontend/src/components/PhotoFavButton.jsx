@@ -7,10 +7,13 @@ function PhotoFavButton(props) {
   const [favButton, changeFavState] = useState(false);
 
   const isFavPhotoExist = props.isFavPhotoExist;
+  const addFavPhoto = props.addFavPhoto;
+  const id = props.id;
 
   const handleFav = () => {
     changeFavState(prevState => !prevState);
     isFavPhotoExist(true);
+    addFavPhoto(id);
   }
 
   return (

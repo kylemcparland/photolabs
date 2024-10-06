@@ -9,9 +9,15 @@ const App = () => {
 
   const [isFavPhoto, isFavPhotoExist] = useState(false);
 
+  const [favPhotos, addPhotoToFav ] = useState([]);
+
+  const addFavPhoto = (id) => {
+    addPhotoToFav(currentFavs => [...currentFavs, photos[id]]);
+  }
+
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto}/>
+      <HomeRoute topics={topics} photos={photos} isFavPhotoExist={isFavPhotoExist} isFavPhoto={isFavPhoto} addFavPhoto={addFavPhoto} />
     </div>
   );
 };
