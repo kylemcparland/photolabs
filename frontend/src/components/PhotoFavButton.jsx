@@ -3,16 +3,11 @@ import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton(props) {
-
-
-  const { mutateFavPhotos, id, isFav } = props;
+function PhotoFavButton({ updateToFavPhotoIds, id, isFav }) {
 
   const handleFav = (e) => {
     e.stopPropagation();
-
-    // isFavPhotoExist(true);
-    mutateFavPhotos(id, isFav);
+    updateToFavPhotoIds(id, isFav);
   }
 
   return (

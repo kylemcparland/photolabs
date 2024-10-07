@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ mutateFavPhotos, selectPhoto, favPhotoArray, photoData }) => {
+const PhotoListItem = ({ updateToFavPhotoIds, selectPhoto, favPhotoArray, photoData }) => {
   const {
     id,
     user: { name: username, profile },
@@ -15,7 +15,7 @@ const PhotoListItem = ({ mutateFavPhotos, selectPhoto, favPhotoArray, photoData 
 
   return (
     <div className="photo-list__item" key={id} onClick={() => selectPhoto(id)}>
-      <PhotoFavButton mutateFavPhotos={mutateFavPhotos} id={id} isFav={isFav} />
+      <PhotoFavButton updateToFavPhotoIds={updateToFavPhotoIds} id={id} isFav={isFav} />
       <img className="photo-list__image" src={imageSource} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile} />

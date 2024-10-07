@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
@@ -6,7 +6,8 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ displayModal, favPhotoArray, mutateFavPhotos, photoDetails }) => {
+const PhotoDetailsModal = ({ displayModal, favPhotoArray, updateToFavPhotoIds, photoDetails, selectPhoto }) => {
+
   const {
     id,
     user: { name: username, profile },
@@ -22,13 +23,18 @@ const PhotoDetailsModal = ({ displayModal, favPhotoArray, mutateFavPhotos, photo
     <div className="photo-details-modal">
 
       <div className="photo-details-modal__top-bar">
-        <PhotoFavButton isFav={isFav} mutateFavPhotos={mutateFavPhotos} id={id} />
+        <PhotoFavButton isFav={isFav} updateToFavPhotoIds={updateToFavPhotoIds} id={id} />
         <button className="photo-details-modal__close-button" onClick={() => displayModal(false)} >
           <img src={closeSymbol} alt="close symbol" />
         </button>
       </div>
 
-      <img className="photo-details-modal__image" src={imageSource} />
+      <div className="photo-area">
+        <div className="photo-details-modal__image-container">
+          <img className="photo-details-modal__image" src={imageSource} />
+        </div>
+      </div>
+
       <div className="photo-details-modal__header">
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={profile} />
@@ -41,7 +47,7 @@ const PhotoDetailsModal = ({ displayModal, favPhotoArray, mutateFavPhotos, photo
 
       <div className="photo-details-modal__images">
         <p>Similar Photos</p>
-        <PhotoList photos={similarPhotos} favPhotoArray={favPhotoArray} mutateFavPhotos={mutateFavPhotos} />
+        <PhotoList photos={similarPhotos} favPhotoArray={favPhotoArray} updateToFavPhotoIds={updateToFavPhotoIds} selectPhoto={selectPhoto} />
       </div>
 
     </div>
