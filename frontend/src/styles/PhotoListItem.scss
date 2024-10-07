@@ -12,6 +12,10 @@
   }
 }
 
+.image-container {
+  position: relative;
+}
+
 .photo-list__image {
   user-select: none;
   width: 300px;

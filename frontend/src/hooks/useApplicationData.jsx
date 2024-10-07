@@ -18,7 +18,7 @@ const useApplicationData = () => {
         ? prevState.favPhotoArray.filter(fav => fav !== id) // remove from array
         : [...prevState.favPhotoArray, id]; // add to array
 
-      return { favPhotoArray: updatedFavs };
+      return { ...prevState, favPhotoArray: updatedFavs };
     });
   };
 

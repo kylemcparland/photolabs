@@ -6,7 +6,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ displayModal, favPhotoArray, updateToFavPhotoIds, photoDetails, selectPhoto }) => {
+const PhotoDetailsModal = ({ onClosePhotoDetailsModal, favPhotoArray, updateToFavPhotoIds, photoDetails, selectPhoto }) => {
 
   const {
     id,
@@ -21,16 +21,16 @@ const PhotoDetailsModal = ({ displayModal, favPhotoArray, updateToFavPhotoIds, p
 
   return (
     <div className="photo-details-modal">
-
       <div className="photo-details-modal__top-bar">
-        <PhotoFavButton isFav={isFav} updateToFavPhotoIds={updateToFavPhotoIds} id={id} />
-        <button className="photo-details-modal__close-button" onClick={() => displayModal(false)} >
+
+        <button className="photo-details-modal__close-button" onClick={onClosePhotoDetailsModal} >
           <img src={closeSymbol} alt="close symbol" />
         </button>
       </div>
 
       <div className="photo-area">
         <div className="photo-details-modal__image-container">
+          <PhotoFavButton isFav={isFav} updateToFavPhotoIds={updateToFavPhotoIds} id={id} />
           <img className="photo-details-modal__image" src={imageSource} />
         </div>
       </div>

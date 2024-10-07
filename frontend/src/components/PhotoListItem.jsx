@@ -15,8 +15,11 @@ const PhotoListItem = ({ updateToFavPhotoIds, selectPhoto, favPhotoArray, photoD
 
   return (
     <div className="photo-list__item" key={id} onClick={() => selectPhoto(id)}>
-      <PhotoFavButton updateToFavPhotoIds={updateToFavPhotoIds} id={id} isFav={isFav} />
-      <img className="photo-list__image" src={imageSource} />
+      <div className="image-container">
+        <PhotoFavButton updateToFavPhotoIds={updateToFavPhotoIds} id={id} isFav={isFav} />
+        <img className="photo-list__image" src={imageSource} />
+      </div>
+
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile} />
         <div className="photo-list__user-info">
