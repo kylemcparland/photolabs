@@ -1,44 +1,57 @@
 import { useReducer, useEffect } from "react";
+import ACTIONS from "./actions";
+
+const {
+  SET_PHOTO_DATA,
+  SET_TOPIC_DATA,
+  GET_PHOTOS_BY_TOPICS,
+  FAV_PHOTO_ADDED,
+  FAV_PHOTO_REMOVED,
+  SELECT_PHOTO,
+  CLOSE_MODAL
+} = ACTIONS;
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SET_PHOTO_DATA":
+    case SET_PHOTO_DATA:
       return {
         ...state,
         photoData: action.payload.photoData
       };
-    case "SET_TOPIC_DATA":
+    case SET_TOPIC_DATA:
       return {
         ...state,
         topicData: action.payload.topicData
       };
-    case "GET_PHOTOS_BY_TOPICS":
+    case GET_PHOTOS_BY_TOPICS:
       return {
         ...state,
         photoData: action.payload.photoData
       }
-    case "FAV_PHOTO_ADDED":
+    case FAV_PHOTO_ADDED:
       return {
         ...state,
         favPhotoArray: [...state.favPhotoArray, action.payload.id]
       };
-    case "FAV_PHOTO_REMOVED":
+    case FAV_PHOTO_REMOVED:
       return {
         ...state,
         favPhotoArray: state.favPhotoArray.filter(fav => fav !== action.payload.id)
       };
-    case "SELECT_PHOTO":
+    case SELECT_PHOTO:
       return {
         ...state,
         modal: action.payload.selectedPhoto
       };
-    case "CLOSE_MODAL":
+    case CLOSE_MODAL:
       return {
         ...state,
         modal: undefined
       };
     default:
-      return state;
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${action.type}`
+      );
   }
 };
 
@@ -61,7 +74,7 @@ const useApplicationData = () => {
       .then(result => result.json())
       .then((data) => {
         dispatch({
-          type: "SET_PHOTO_DATA",
+          type: SET_PHOTO_DATA,
           payload: { photoData: data }
         })
       })
@@ -73,7 +86,7 @@ const useApplicationData = () => {
       .then(result => result.json())
       .then((data) => {
         dispatch({
-          type: "SET_TOPIC_DATA",
+          type: SET_TOPIC_DATA,
           payload: { topicData: data }
         })
       })
@@ -87,7 +100,7 @@ const useApplicationData = () => {
   // ==> ACTION TO SET UPDATE FAVS:
   const updateToFavPhotoIds = (id, isFav) => {
     dispatch({
-      type: isFav ? "FAV_PHOTO_REMOVED" : "FAV_PHOTO_ADDED",
+      type: isFav ? FAV_PHOTO_REMOVED : FAV_PHOTO_ADDED,
       payload: { id }
     });
   };
@@ -96,7 +109,7 @@ const useApplicationData = () => {
   const setPhotoSelected = (id) => {
     const selectedPhoto = state.photoData.find(photo => photo.id === id);
     dispatch({
-      type: "SELECT_PHOTO",
+      type: SELECT_PHOTO,
       payload: { selectedPhoto }
     })
   };
@@ -104,7 +117,7 @@ const useApplicationData = () => {
   // ==> ACTION TO CLOSE MODAL:
   const onClosePhotoDetailsModal = () => {
     dispatch({
-      type: "CLOSE_MODAL",
+      type: CLOSE_MODAL,
       payload: {}
     })
   };
@@ -115,7 +128,7 @@ const useApplicationData = () => {
       .then((data) => {
         console.log(data);
         dispatch({
-          type: "GET_PHOTOS_BY_TOPICS",
+          type: GET_PHOTOS_BY_TOPICS,
           payload: { photoData: data }
         })
       })
