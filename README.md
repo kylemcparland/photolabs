@@ -47,7 +47,7 @@ _React's state management system enables persistent favourites across the page!_
 _Click on a photo to open a detailed photo modal o => O_
 !["Screenshot of detailed photo view"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PHOTOLABS-modal.png "Screenshot of detailed photo view")
 
-_Dynamically sort photos by TOPIC... Or view all photos unsorted! The choice is yours!_
+_Dynamically sort photos by topic... Or explore all photos!_
 !["Animated gif of sorting photos by topic"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PHOTOLABS-topics.gif "Animated gif of sorting photos by topic")
 
 ## Dependencies + Acknowledgements
@@ -66,6 +66,8 @@ Back-end:
 - Socket.io ^2.2.0
 
 ## Bugs and Issues
-If you encounter any bugs, please feel free to open an issue on GitHub.
+If you encounter any bugs, please feel free to open an issue on [github](https://github.com/kylemcparland/photolabs/issues).
 
-This project was built for educational purposes. Thank you for checking it out!
+---
+
+#### This project was built for educational purposes. Thank you for checking it out!
