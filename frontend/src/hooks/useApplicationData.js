@@ -1,9 +1,17 @@
-import { useReducer } from "react";
-import photos from "mocks/photos";
-import topics from 'mocks/topics';
+import { useReducer, useEffect } from "react";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "SET_PHOTO_DATA":
+      return {
+        ...state,
+        photoData: action.payload.photoData
+      };
+    case "SET_TOPIC_DATA":
+      return {
+        ...state,
+        topicData: action.payload.topicData
+      };
     case "FAV_PHOTO_ADDED":
       return {
         ...state,
@@ -34,11 +42,36 @@ const useApplicationData = () => {
   // ==> INITIALIZE STATE OBJECT:
   const initialState = {
     favPhotoArray: [],
-    modal: undefined
+    modal: undefined,
+    photoData: [],
+    topicData: []
   };
 
   // ==> USE-REDUCER:
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // ==> INITIALIZE PHOTO DATA FROM API:
+  useEffect(() => {
+    fetch('/api/photos')
+      .then(result => result.json())
+      .then((data) => {
+        dispatch({
+          type: "SET_PHOTO_DATA",
+          payload: { photoData: data }
+        })
+      })
+  }, [])
+
+  useEffect(() => {
+    fetch('/api/topics')
+      .then(result => result.json())
+      .then((data) => {
+        dispatch({
+          type: "SET_TOPIC_DATA",
+          payload: { topicData: data }
+        })
+      })
+  }, [])
 
   // ==> ACTION TO SET UPDATE FAVS:
   const updateToFavPhotoIds = (id, isFav) => {
@@ -50,7 +83,7 @@ const useApplicationData = () => {
 
   // ==> ACTION TO SELECT PHOTO:
   const setPhotoSelected = (id) => {
-    const selectedPhoto = photos.find(photo => photo.id === id);
+    const selectedPhoto = state.photoData.find(photo => photo.id === id);
     dispatch({
       type: "SELECT_PHOTO",
       payload: { selectedPhoto }
@@ -70,8 +103,6 @@ const useApplicationData = () => {
     setPhotoSelected,
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
-    photos,
-    topics,
   };
 };
 
