@@ -24,14 +24,18 @@ Finally, install dependencies with `npm install` in each respective `/frontend` 
 ```sh
 cd backend
 npm start
+...
+"Listening on port 8001 in development mode."
 ```
-2. Start the front-end application:
+2. Start the front-end application. The app will be served at port 3000 by default:
 
 ```sh
 cd frontend
 npm start
+...
+"Compiled successfully!"
 ```
-The app will be served at http://localhost:3000 !
+Connect locally using the url http://localhost:3000/ in your browser!
 
 ## Final Product
 
