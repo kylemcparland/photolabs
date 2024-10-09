@@ -8,7 +8,7 @@ import './App.scss';
 const App = () => {
 
   const {
-    state,
+    state: { modal, favPhotoArray, topicData, photoData },
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
@@ -18,21 +18,21 @@ const App = () => {
 
   return (
     <div className="App">
-      {state.modal && (
+      {modal && (
         <PhotoDetailsModal
           updateToFavPhotoIds={updateToFavPhotoIds}
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-          photoDetails={state.modal}
-          favPhotoArray={state.favPhotoArray}
+          photoDetails={modal}
+          favPhotoArray={favPhotoArray}
           selectPhoto={setPhotoSelected}
         />
       )}
       <HomeRoute
+        topics={topicData}
+        photos={photoData}
         updateToFavPhotoIds={updateToFavPhotoIds}
-        topics={state.topicData}
-        photos={state.photoData}
         setPhotoSelected={setPhotoSelected}
-        favPhotoArray={state.favPhotoArray}
+        favPhotoArray={favPhotoArray}
         setPhotosByTopic={setPhotosByTopic}
         fetchData={fetchData}
       />
