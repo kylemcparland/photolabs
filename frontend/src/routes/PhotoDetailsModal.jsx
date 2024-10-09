@@ -20,7 +20,7 @@ const PhotoDetailsModal = ({ onClosePhotoDetailsModal, favPhotoArray, updateToFa
   const isFav = favPhotoArray.includes(id);
 
   return (
-    <div className="photo-details-modal">
+    <div className="photo-details-modal" id="photo-details-modal">
       <div className="photo-details-modal__top-bar">
 
         <button className="photo-details-modal__close-button" onClick={onClosePhotoDetailsModal} >
@@ -39,14 +39,14 @@ const PhotoDetailsModal = ({ onClosePhotoDetailsModal, favPhotoArray, updateToFa
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={profile} />
           <div className="photo-details-modal__photographer-info">
-            <p>{username}</p>
+            <p className="photo-details-modal__photographer-name">{username}</p>
             <p className="photo-details-modal__photographer-location">{city} {country}</p>
           </div>
         </div>
       </div>
 
       <div className="photo-details-modal__images">
-        <p>Similar Photos</p>
+        <p className="photo-details-modal__similar-photos">Similar Photos</p>
         <PhotoList photos={similarPhotos} favPhotoArray={favPhotoArray} updateToFavPhotoIds={updateToFavPhotoIds} selectPhoto={selectPhoto} />
       </div>
 

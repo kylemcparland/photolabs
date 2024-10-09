@@ -81,6 +81,7 @@ const useApplicationData = () => {
       .catch(error => console.log("Error fetching PHOTO_DATA from API:", error))
   }, [])
 
+  // ==> INITIALIZE TOPIC DATA FROM API:
   useEffect(() => {
     fetch('/api/topics')
       .then(result => result.json())
@@ -93,8 +94,16 @@ const useApplicationData = () => {
       .catch(error => console.log("Error fetching TOPIC_DATA from API:", error))
   }, [])
 
+  // ==> MODAL SCROLL UP WHEN PHOTO SELECTED:
   useEffect(() => {
-    console.log("Photo data updated");
+    const modal = document.getElementById('photo-details-modal');
+    if (modal) {
+      modal.scrollTo(0, 0);
+    }
+  }, [state.modal])
+
+  useEffect(() => {
+    console.log("Photo data retrieved!");
   }, [state.photoData])
 
   // ==> ACTION TO SET UPDATE FAVS:
@@ -107,6 +116,7 @@ const useApplicationData = () => {
 
   // ==> ACTION TO SELECT PHOTO:
   const setPhotoSelected = (id) => {
+    window.scrollTo(0, 0);
     const selectedPhoto = state.photoData.find(photo => photo.id === id);
     dispatch({
       type: SELECT_PHOTO,

@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
   align-items: center;
   -webkit-box-shadow: 0 4px 6px -6px #222;
   -moz-box-shadow: 0 4px 6px -6px #222;
@@ -17,4 +19,8 @@
   color: #111;
   text-underline-position: auto;
   margin-left: 24px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

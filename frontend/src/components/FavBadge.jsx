@@ -10,6 +10,11 @@ const FavBadge = ({ favPhotoArray }) => {
   return (
     <div className='fav-badge'>
       <FavIcon displayAlert={isFav}/>
+      {isFav && (
+        <div className='fav-badge__count'>
+          <span>{favPhotoArray.length}</span>
+        </div>
+      )}
     </div>
   ) 
 };

@@ -1,5 +1,9 @@
 .home-route {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 1200px;
+  min-width: 750px;
   margin: auto;
   background-color: #F5F5F5;
 }

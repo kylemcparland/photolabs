@@ -10,7 +10,7 @@ const TopNavigation = (props) => {
 
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
+      <span className="top-nav-bar__logo" onClick={() => location.reload()}>PhotoLabs</span>
       <TopicList topics={topics} setPhotosByTopic={setPhotosByTopic} />
       <FavBadge favPhotoArray={favPhotoArray} />
     </div>
