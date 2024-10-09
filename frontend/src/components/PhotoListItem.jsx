@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ updateToFavPhotoIds, selectPhoto, favPhotoArray, photoData }) => {
+const PhotoListItem = (props) => {
+
+  const {
+    photoData,
+    updateToFavPhotoIds,
+    selectPhoto,
+    favPhotoArray
+  } = props;
+
   const {
     id,
     user: { name: username, profile },
@@ -11,13 +19,18 @@ const PhotoListItem = ({ updateToFavPhotoIds, selectPhoto, favPhotoArray, photoD
     location: { city, country },
   } = photoData;
 
+  // ==> CHECK IF CURRENT PHOTO IS MARKED FAVOURITE:
   const isFav = favPhotoArray.includes(id);
 
   return (
     <div className="photo-list__item" key={id} onClick={() => selectPhoto(id)}>
       <div className="image-container">
-        <PhotoFavButton updateToFavPhotoIds={updateToFavPhotoIds} id={id} isFav={isFav} />
-        <img className="photo-list__image" src={imageSource} />
+        <PhotoFavButton
+          id={id}
+          isFav={isFav}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+        />
+        <img className="photo-list__image" src={imageSource} alt={`Photo by: ${username}`} />
       </div>
 
       <div className="photo-list__user-details">
@@ -28,7 +41,7 @@ const PhotoListItem = ({ updateToFavPhotoIds, selectPhoto, favPhotoArray, photoD
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default PhotoListItem;

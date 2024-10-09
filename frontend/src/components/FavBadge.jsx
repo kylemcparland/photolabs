@@ -5,6 +5,7 @@ import '../styles/FavBadge.scss';
 
 const FavBadge = ({ favPhotoArray }) => {
 
+  // ==> CHECK IF THERE ARE ANY FAVOURITED PHOTOS:
   const isFav = favPhotoArray.length > 0;
 
   return (
@@ -16,7 +17,7 @@ const FavBadge = ({ favPhotoArray }) => {
         </div>
       )}
     </div>
-  ) 
+  );
 };
 
 export default FavBadge;

@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from "react";
-import ACTIONS from "./actions";
+import ACTIONS from "actions/actions";
 
 const {
   SET_PHOTO_DATA,
@@ -11,22 +11,23 @@ const {
   CLOSE_MODAL
 } = ACTIONS;
 
+// ==> REDUCER:
 const reducer = (state, action) => {
   switch (action.type) {
     case SET_PHOTO_DATA:
       return {
         ...state,
-        photoData: action.payload.photoData
+        photoData: action.payload.data
       };
     case SET_TOPIC_DATA:
       return {
         ...state,
-        topicData: action.payload.topicData
+        topicData: action.payload.data
       };
     case GET_PHOTOS_BY_TOPICS:
       return {
         ...state,
-        photoData: action.payload.photoData
+        photoData: action.payload.data
       }
     case FAV_PHOTO_ADDED:
       return {
@@ -68,43 +69,19 @@ const useApplicationData = () => {
   // ==> USE-REDUCER:
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // ==> INITIALIZE PHOTO DATA FROM API:
-  useEffect(() => {
-    fetch('/api/photos')
+  // ==> FETCH DATA FROM API:
+  const fetchData = (url, actionType) => {
+    fetch(url)
       .then(result => result.json())
-      .then((data) => {
-        dispatch({
-          type: SET_PHOTO_DATA,
-          payload: { photoData: data }
-        })
-      })
-      .catch(error => console.log("Error fetching PHOTO_DATA from API:", error))
-  }, [])
+      .then(data => dispatch({ type: actionType, payload: { data } }))
+      .catch(error => console.log(`Error fetching data from ${url}`, error));
+  };
 
-  // ==> INITIALIZE TOPIC DATA FROM API:
+  // ==> INITIALIZE PHOTO/TOPICS DATA:
   useEffect(() => {
-    fetch('/api/topics')
-      .then(result => result.json())
-      .then((data) => {
-        dispatch({
-          type: SET_TOPIC_DATA,
-          payload: { topicData: data }
-        })
-      })
-      .catch(error => console.log("Error fetching TOPIC_DATA from API:", error))
-  }, [])
-
-  // ==> MODAL SCROLL UP WHEN PHOTO SELECTED:
-  useEffect(() => {
-    const modal = document.getElementById('photo-details-modal');
-    if (modal) {
-      modal.scrollTo(0, 0);
-    }
-  }, [state.modal])
-
-  useEffect(() => {
-    console.log("Photo data retrieved!");
-  }, [state.photoData])
+    fetchData('/api/photos', SET_PHOTO_DATA);
+    fetchData('/api/topics', SET_TOPIC_DATA);
+  }, []);
 
   // ==> ACTION TO SET UPDATE FAVS:
   const updateToFavPhotoIds = (id, isFav) => {
@@ -118,38 +95,34 @@ const useApplicationData = () => {
   const setPhotoSelected = (id) => {
     window.scrollTo(0, 0);
     const selectedPhoto = state.photoData.find(photo => photo.id === id);
-    dispatch({
-      type: SELECT_PHOTO,
-      payload: { selectedPhoto }
-    })
+    dispatch({ type: SELECT_PHOTO, payload: { selectedPhoto } });
   };
 
   // ==> ACTION TO CLOSE MODAL:
   const onClosePhotoDetailsModal = () => {
-    dispatch({
-      type: CLOSE_MODAL,
-      payload: {}
-    })
+    dispatch({ type: CLOSE_MODAL });
   };
 
+  // ==> MODAL SCROLL UP WHEN PHOTO SELECTED:
+  useEffect(() => {
+    const modal = document.getElementById('photo-details-modal');
+    if (modal) {
+      modal.scrollTo(0, 0);
+    }
+  }, [state.modal]);
+
+  // ==> ACTION TO SET SPECIFIC TOPIC:
   const setPhotosByTopic = (topic_id) => {
-    fetch(`/api/topics/photos/${topic_id}`)
-      .then(result => result.json())
-      .then((data) => {
-        console.log(data);
-        dispatch({
-          type: GET_PHOTOS_BY_TOPICS,
-          payload: { photoData: data }
-        })
-      })
-  }
+    fetchData(`/api/topics/photos/${topic_id}`, GET_PHOTOS_BY_TOPICS);
+  };
 
   return {
     state,
-    setPhotoSelected,
     updateToFavPhotoIds,
+    setPhotoSelected,
     onClosePhotoDetailsModal,
-    setPhotosByTopic
+    setPhotosByTopic,
+    fetchData
   };
 };
 

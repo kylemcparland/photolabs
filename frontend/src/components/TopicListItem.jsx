@@ -7,9 +7,8 @@ const TopicListItem = (props) => {
   const { setPhotosByTopic, topicData } = props;
 
   const handleClick = () => {
-    console.log(topicData.title);
-    setPhotosByTopic(topicData.id)
-  }
+    setPhotosByTopic(topicData.id);
+  };
 
   return (
     <div className="topic-list__item" onClick={handleClick}>
