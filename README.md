@@ -33,7 +33,18 @@ npm start
 ```
 The app will be served at http://localhost:3000 !
 
-## Screenshots
+## Final Product
+
+!["Screenshot of PhotoLabs homepage"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PHOTOLABSmain.png "Screenshot of PhotoLabs homepage")
+
+_React's state management system enables persistent favourites across the page!_
+!["Animated gif of opening detailed photo view"](https://github.com/kylemcparland/photolabs/blob/main/screenshots/PHOTOLABS-modal.gif?raw=true "Animated gif of opening detailed photo view")
+
+_Click on a photo to open a detailed photo modal o => O_
+!["Screenshot of detailed photo view"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PHOTOLABS-modal.png "Screenshot of detailed photo view")
+
+_Dynamically sort photos by TOPIC... Or view all photos unsorted! The choice is yours!_
+!["Animated gif of sorting photos by topic"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PHOTOLABS-topics.gif "Animated gif of sorting photos by topic")
 
 ## Dependencies + Acknowledgements
 This project utilizes the following libraries and development tools:
