@@ -5,10 +5,10 @@ import "../styles/TopicList.scss";
 
 const TopicList = (props) => {
 
-  const topics = props.topics;
+  const { topics, setPhotosByTopic } = props;
 
   const topicListArray = topics.map(topic => (
-    <TopicListItem key={topic.id} topicData={topic}/>
+    <TopicListItem key={topic.id} topicData={topic} setPhotosByTopic={setPhotosByTopic} />
   ))
 
   return (

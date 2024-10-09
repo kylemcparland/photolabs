@@ -12,6 +12,11 @@ const reducer = (state, action) => {
         ...state,
         topicData: action.payload.topicData
       };
+    case "GET_PHOTOS_BY_TOPICS":
+      return {
+        ...state,
+        photoData: action.payload.photoData
+      }
     case "FAV_PHOTO_ADDED":
       return {
         ...state,
@@ -60,6 +65,7 @@ const useApplicationData = () => {
           payload: { photoData: data }
         })
       })
+      .catch(error => console.log("Error fetching PHOTO_DATA from API:", error))
   }, [])
 
   useEffect(() => {
@@ -71,7 +77,12 @@ const useApplicationData = () => {
           payload: { topicData: data }
         })
       })
+      .catch(error => console.log("Error fetching TOPIC_DATA from API:", error))
   }, [])
+
+  useEffect(() => {
+    console.log("Photo data updated");
+  }, [state.photoData])
 
   // ==> ACTION TO SET UPDATE FAVS:
   const updateToFavPhotoIds = (id, isFav) => {
@@ -98,11 +109,24 @@ const useApplicationData = () => {
     })
   };
 
+  const setPhotosByTopic = (topic_id) => {
+    fetch(`/api/topics/photos/${topic_id}`)
+      .then(result => result.json())
+      .then((data) => {
+        console.log(data);
+        dispatch({
+          type: "GET_PHOTOS_BY_TOPICS",
+          payload: { photoData: data }
+        })
+      })
+  }
+
   return {
     state,
     setPhotoSelected,
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
+    setPhotosByTopic
   };
 };
 
