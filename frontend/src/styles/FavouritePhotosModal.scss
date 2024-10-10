@@ -1,0 +1,53 @@
+.favourite-photos-modal {
+  background-color: white;
+  box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .5);
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  height: 90%;
+  max-width: 900px;
+  overflow-y: scroll;
+  border-radius: 12px;
+  z-index: 1000;
+}
+
+.favourite-photos-modal__top-bar {
+  display: flex;
+  min-width: 863px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  align-items: center;
+}
+
+.favourite-photos-modal__close-button {
+  background-color: white;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 13px;
+  margin-top: 13px;
+}
+
+.favourite-photos-modal__title {
+  display: flex;
+  justify-content: center;
+}
+
+.favourite-photos__images {
+  margin-left: 36px;
+  margin-top: 8px;
+}
+
+.favourite-photos-no-likes {
+  font-size: x-large;
+  font-weight: 200;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}

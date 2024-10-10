@@ -23,11 +23,8 @@ const PhotoDetailsModal = (props) => {
     similar_photos
   } = photoDetails;
 
-  // ==> EXTRACT ARRAY OF SIMILAR PHOTOS:
-  const similarPhotos = Object.values(similar_photos);
-
   // ==> CHECK IF CURRENT PHOTO IS MARKED FAVOURITE:
-  const isFav = favPhotoArray.includes(id);
+  const isFav = favPhotoArray.find(photo => photo.id === id);
 
   return (
     <div className="photo-details-modal" id="photo-details-modal">
@@ -40,7 +37,7 @@ const PhotoDetailsModal = (props) => {
       <div className="photo-area">
         <div className="photo-details-modal__image-container">
           <PhotoFavButton
-            id={id}
+            photoData={photoDetails}
             isFav={isFav}
             updateToFavPhotoIds={updateToFavPhotoIds}
           />
@@ -61,7 +58,7 @@ const PhotoDetailsModal = (props) => {
       <div className="photo-details-modal__images">
         <p className="photo-details-modal__similar-photos">Similar Photos</p>
         <PhotoList
-          photos={similarPhotos}
+          photos={similar_photos}
           favPhotoArray={favPhotoArray}
           updateToFavPhotoIds={updateToFavPhotoIds}
           selectPhoto={selectPhoto}

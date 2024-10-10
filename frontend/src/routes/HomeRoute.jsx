@@ -13,7 +13,8 @@ const HomeRoute = (props) => {
     setPhotoSelected,
     favPhotoArray,
     setPhotosByTopic,
-    fetchData
+    fetchData,
+    setFavouritesModalSelected
   } = props;
 
   return (
@@ -23,6 +24,7 @@ const HomeRoute = (props) => {
         favPhotoArray={favPhotoArray}
         setPhotosByTopic={setPhotosByTopic}
         fetchData={fetchData}
+        setFavouritesModalSelected={setFavouritesModalSelected}
       />
       <PhotoList
         photos={photos}

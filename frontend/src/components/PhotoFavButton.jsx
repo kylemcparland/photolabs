@@ -3,11 +3,12 @@ import React from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton({ id, isFav, updateToFavPhotoIds }) {
+function PhotoFavButton({ photoData, isFav, updateToFavPhotoIds }) {
 
   const handleFav = (e) => {
     e.stopPropagation();
-    updateToFavPhotoIds(id, isFav);
+    // updateToFavPhotoIds(id, isFav);
+    updateToFavPhotoIds(photoData, isFav)
   }
 
   return (

@@ -8,7 +8,8 @@ const {
   FAV_PHOTO_ADDED,
   FAV_PHOTO_REMOVED,
   SELECT_PHOTO,
-  CLOSE_MODAL
+  CLOSE_MODAL,
+  OPEN_FAVOURITES_MODAL
 } = ACTIONS;
 
 // ==> REDUCER:
@@ -32,12 +33,12 @@ const reducer = (state, action) => {
     case FAV_PHOTO_ADDED:
       return {
         ...state,
-        favPhotoArray: [...state.favPhotoArray, action.payload.id]
+        favPhotoArray: [...state.favPhotoArray, action.payload.photoData]
       };
     case FAV_PHOTO_REMOVED:
       return {
         ...state,
-        favPhotoArray: state.favPhotoArray.filter(fav => fav !== action.payload.id)
+        favPhotoArray: state.favPhotoArray.filter(fav => fav.id !== action.payload.photoData.id)
       };
     case SELECT_PHOTO:
       return {
@@ -48,6 +49,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         modal: undefined
+      };
+    case OPEN_FAVOURITES_MODAL:
+      return {
+        ...state,
+        modal: "FAVOURITES_MODAL"
       };
     default:
       throw new Error(
@@ -84,10 +90,10 @@ const useApplicationData = () => {
   }, []);
 
   // ==> ACTION TO SET UPDATE FAVS:
-  const updateToFavPhotoIds = (id, isFav) => {
+  const updateToFavPhotoIds = (photoData, isFav) => {
     dispatch({
       type: isFav ? FAV_PHOTO_REMOVED : FAV_PHOTO_ADDED,
-      payload: { id }
+      payload: { photoData }
     });
   };
 
@@ -116,13 +122,19 @@ const useApplicationData = () => {
     fetchData(`/api/topics/photos/${topic_id}`, GET_PHOTOS_BY_TOPICS);
   };
 
+  // ==> ACTION TO OPEN FAVOURITES MODAL:
+  const setFavouritesModalSelected = () => {
+    dispatch({ type: OPEN_FAVOURITES_MODAL });
+  };
+
   return {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
     setPhotosByTopic,
-    fetchData
+    fetchData,
+    setFavouritesModalSelected
   };
 };
 

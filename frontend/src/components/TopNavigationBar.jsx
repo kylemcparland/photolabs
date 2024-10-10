@@ -10,7 +10,8 @@ const TopNavigation = (props) => {
     topics,
     favPhotoArray,
     setPhotosByTopic,
-    fetchData
+    fetchData,
+    setFavouritesModalSelected
   } = props;
 
   // ==> RESET TOPIC SELECTION:
@@ -27,6 +28,7 @@ const TopNavigation = (props) => {
       />
       <FavBadge
         favPhotoArray={favPhotoArray}
+        setFavouritesModalSelected={setFavouritesModalSelected}
       />
     </div>
   );

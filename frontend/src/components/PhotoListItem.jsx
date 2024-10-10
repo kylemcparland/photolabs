@@ -20,13 +20,13 @@ const PhotoListItem = (props) => {
   } = photoData;
 
   // ==> CHECK IF CURRENT PHOTO IS MARKED FAVOURITE:
-  const isFav = favPhotoArray.includes(id);
+  const isFav = favPhotoArray.find(photo => photo.id === id);
 
   return (
     <div className="photo-list__item" key={id} onClick={() => selectPhoto(id)}>
       <div className="image-container">
         <PhotoFavButton
-          id={id}
+          photoData={photoData}
           isFav={isFav}
           updateToFavPhotoIds={updateToFavPhotoIds}
         />
