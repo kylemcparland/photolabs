@@ -26,12 +26,12 @@ const HomeRoute = (props) => {
         fetchData={fetchData}
         setFavouritesModalSelected={setFavouritesModalSelected}
       />
-      <PhotoList
-        photos={photos}
-        updateToFavPhotoIds={updateToFavPhotoIds}
-        selectPhoto={setPhotoSelected}
-        favPhotoArray={favPhotoArray}
-      />
+        <PhotoList
+          photos={photos}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          selectPhoto={setPhotoSelected}
+          favPhotoArray={favPhotoArray}
+        />
     </div>
   );
 };
