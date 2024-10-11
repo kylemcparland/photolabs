@@ -40,16 +40,19 @@ Connect locally using the url http://localhost:3000/ in your browser!
 
 ## Final Product
 
-!["Screenshot of PhotoLabs homepage"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PHOTOLABSmain.png "Screenshot of PhotoLabs homepage")
+!["Screenshot of PhotoLabs homepage"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PL-1.png "Screenshot of PhotoLabs homepage")
 
 _React's state management system enables persistent favourites across the page!_
-!["Animated gif of opening detailed photo view"](https://github.com/kylemcparland/photolabs/blob/main/screenshots/PHOTOLABS-modal.gif?raw=true "Animated gif of opening detailed photo view")
+!["Animated gif of opening detailed photo view"](https://github.com/kylemcparland/photolabs/blob/main/screenshots/PL-2.gif?raw=true "Animated gif of opening detailed photo view")
 
 _Click on a photo to open a detailed photo modal o => O_
-!["Screenshot of detailed photo view"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PHOTOLABS-modal.png "Screenshot of detailed photo view")
+!["Screenshot of detailed photo view"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PL-3.png "Screenshot of detailed photo view")
+
+_Your favourites have a pop-up modal too!_
+!["Screenshot of favourites page"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PL-4.png "Screenshot of favourites page")
 
 _Dynamically sort photos by topic... Or explore all photos!_
-!["Animated gif of sorting photos by topic"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PHOTOLABS-topics.gif "Animated gif of sorting photos by topic")
+!["Animated gif of sorting photos by topic"](https://raw.githubusercontent.com/kylemcparland/photolabs/refs/heads/main/screenshots/PL-5.gif "Animated gif of sorting photos by topic")
 
 ## Dependencies + Acknowledgements
 This project utilizes the following libraries and development tools:
